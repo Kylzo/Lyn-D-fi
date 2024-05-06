@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const fullscreenImage = document.querySelector(".fullscreen-image");
     const fullscreenImg = document.querySelector(".fullscreen-image img");
     const button = document.createElement("button");
-    button.textContent = "Go!"
+    button.textContent = "Push!"
     button.classList.add("fullscreen-button");
     document.body.appendChild(button);
 
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Réinitialiser le texte du bouton après 10 secondes
         setTimeout(function () {
-            button.textContent = "Go!";
+            button.textContent = "Push!";
         }, 10000); // 10000 millisecondes équivalent à 10 secondes
     });
 

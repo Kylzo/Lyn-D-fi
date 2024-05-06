@@ -109,15 +109,17 @@ footer {
     font-family: "Lobster Two", sans-serif;
     font-weight: bold;
     font-style: normal;
+    color: #ffffff;
+    text-shadow: #000000 1px 1px 1px 1px;
     position: fixed;
     top: 120px;
-    right: 5%;
-    font-size: 25px;
+    right: 6%;
+    font-size: 20px;
     height: 80px;
     width: 80px;
     border-radius: 50%;
     /* Pour rendre le bouton circulaire */
-    background-image: linear-gradient(to right, #f0cdc2, #ffffff);
+    background-image: linear-gradient(to right, #f0cdc2, #ffecec);
     /* Utilisez la fonction linear-gradient pour le dégradé de couleur */
     border: solid white 0.5px;
     text-align: center;
