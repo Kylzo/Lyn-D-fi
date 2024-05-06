@@ -3,17 +3,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const fullscreenImage = document.querySelector(".fullscreen-image");
     const fullscreenImg = document.querySelector(".fullscreen-image img");
     const button = document.createElement("button");
-    button.textContent = "Push!"
+    button.textContent = "Push!";
     button.classList.add("fullscreen-button");
     document.body.appendChild(button);
 
-    let usedIndexes = [];
+    let usedIndexes = JSON.parse(localStorage.getItem("usedIndexes")) || [];
 
     button.addEventListener("click", function () {
         if (usedIndexes.length === images.length) {
-            alert("Toutes les images ont été affichées.");
+            localStorage.clear(); // Vider le stockage local
+            usedIndexes = []; // Réinitialiser la variable usedIndexes
+            button.textContent = "Reset!"; // Remettre le texte du bouton à sa valeur par défaut
+            if (button.textContent = "Reset!"){
+                button.addEventListener("click", function (){
+                    location.reload(); // Recharger la page
+                })
+            }
             return;
-        }
+        }        
 
         let randomIndex;
         do {
@@ -21,6 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
         } while (usedIndexes.includes(randomIndex));
 
         usedIndexes.push(randomIndex);
+        localStorage.setItem("usedIndexes", JSON.stringify(usedIndexes));
+
         const randomImage = images[randomIndex];
         const src = randomImage.getAttribute("src");
         const alt = randomImage.getAttribute("alt");
@@ -37,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(function () {
             button.textContent = "Push!";
         }, 10000); // 10000 millisecondes équivalent à 10 secondes
+
     });
 
     fullscreenImage.addEventListener("click", function () {
