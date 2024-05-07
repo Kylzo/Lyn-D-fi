@@ -1,15 +1,20 @@
 /* Styles de base */
-body {
+body { 
+    display: flex;
+    flex-direction: column;
     font-family: "Lobster Two", sans-serif;
     font-weight: 400;
     font-style: normal;
     margin: 0;
     padding: 0;
+    height: 100vh;
 }
 
 main {
+    flex-grow: 1;
     text-align: -webkit-center;
     position: relative;
+    min-height: calc(100vh - (headerHeight + footerHeight)); 
     /* Assurez-vous que le positionnement est relatif pour que les éléments enfants positionnés absoluement soient placés correctement */
 }
 
@@ -52,7 +57,7 @@ header p {
 
 .gallery {
     padding: 20px;
-    width: 50%;
+    width: 60%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     /* Trois colonnes égales */
@@ -110,7 +115,6 @@ footer {
     font-weight: bold;
     font-style: normal;
     color: #ffffff;
-    text-shadow: #000000 1px 1px 1px 1px;
     position: fixed;
     top: 120px;
     right: 6%;
@@ -119,7 +123,7 @@ footer {
     width: 80px;
     border-radius: 50%;
     /* Pour rendre le bouton circulaire */
-    background-image: linear-gradient(to right, #f0cdc2, #ffecec);
+    background-image: linear-gradient(to bottom right, #fdfaef, #da9b96);
     /* Utilisez la fonction linear-gradient pour le dégradé de couleur */
     border: solid white 0.5px;
     text-align: center;
@@ -146,16 +150,56 @@ footer {
         inset 2px 2px 4px rgba(0, 0, 0, .15);
 }
 
+.reset-button {
+    font-family: "Lobster Two", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    color: #ffffff;
+    text-shadow: #000000 1px 1px 1px 1px;
+    position: fixed;
+    top: 210px;
+    right: 6.5%;
+    font-size: 20px;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    /* Pour rendre le bouton circulaire */
+    background-image: linear-gradient(to bottom right, #fdfaef, #da9b96);
+    /* Utilisez la fonction linear-gradient pour le dégradé de couleur */
+    border: solid white 0.5px;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+    box-shadow: -6px -6px 14px rgba(255, 255, 255, .7),
+        -6px -6px 10px rgba(255, 255, 255, .5),
+        6px 6px 8px rgba(255, 255, 255, .075),
+        6px 6px 10px rgba(0, 0, 0, .15);
+}
+
+.reset-button:hover {
+    box-shadow: -2px -2px 6px rgba(255, 255, 255, .6),
+        -2px -2px 4px rgba(255, 255, 255, .4),
+        2px 2px 2px rgba(255, 255, 255, .05),
+        2px 2px 4px rgba(0, 0, 0, .1);
+}
+
+.reset-button:active{
+    box-shadow: inset -2px -2px 6px rgba(255, 255, 255, .7),
+        inset -2px -2px 4px rgba(255, 255, 255, .5),
+        inset 2px 2px 2px rgba(255, 255, 255, .075),
+        inset 2px 2px 4px rgba(0, 0, 0, .15);
+}
 
 
 /* Media queries pour les téléphones */
-@media only screen and (max-width: 600px) {
+@media screen and (max-width: 980px) {
     header {
         font-size: 20px;
     }
 
     .gallery {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         padding: 10px;
     }
 
@@ -163,6 +207,20 @@ footer {
         position: absolute;
         top: 50%;
         bottom: 50%;
+    }
+
+    .fullscreen-button {
+        top: 90%;
+        right: 3%;
+        height: 80px;
+        width: 80px;
+    }
+
+    .reset-button {
+        top: 80%;
+        right: 3%;
+        height: 80px;
+        width: 80px;
     }
 }
 
@@ -180,4 +238,21 @@ footer {
 /* Appliquer l'animation aux images */
 .image img {
     animation: fadeIn 0.5s ease-in-out;
+}
+
+@media screen and (max-width: 660px) {
+    header {
+        font-size: 20px;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(1, 1fr);
+        padding: 10px;
+    }
+
+    .fullscreen-image img {
+        position: absolute;
+        top: 50%;
+        bottom: 50%;
+    }
 }
