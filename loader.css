@@ -7,7 +7,7 @@
     animation: fadeOut 3100ms;
     background-color: #e0aca6dd;
     opacity: 0;
-    z-index: 1000;
+    z-index: -1000;
 }
 .typewriter {    
     --pink: #e0aca6;
@@ -145,18 +145,21 @@
     0% {
         opacity: 1;
         visibility: visible;
+        z-index: 1000;
         /* Au début de l'animation, l'opacité est à 1 (entièrement visible) */
     }
 
     90% {
         opacity: 1;
         visibility: visible;
+        z-index: 1000;
     }
     
     100% {
         opacity: 0;
         /* À la fin de l'animation, l'opacité est à 0 (entièrement transparent) */
         visibility: hidden;
+        z-index: -1000;
         /* Optionnel : masquer complètement l'élément après l'animation */
     }
 }
