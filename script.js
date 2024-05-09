@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     imageNames.forEach(function (imageName) {
         var imageDiv = document.createElement("div");
-        imageDiv.className = "image";
+        imageDiv.className = "image flou";
 
         var image = document.createElement("img");
         image.src = "images/" + imageName;
@@ -32,6 +32,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let usedIndexes = JSON.parse(localStorage.getItem("usedIndexes")) || [];
 
+    // Défloute les images déjà utilisées
+    usedIndexes.forEach(function (index) {
+        images[index].parentElement.classList.remove("flou");
+    });
+
     button.addEventListener("click", function () {
         // Vérifie si toutes les images ont été affichées
         if (usedIndexes.length === images.length) {
@@ -39,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const resetButton = document.createElement("button");
             resetButton.textContent = "Reset";
             resetButton.classList.add("reset-button");
-            document.body.appendChild(resetButton);                
+            document.body.appendChild(resetButton);
             alert("Toutes les images ont été tirées, appuyez sur le bouton reset !");
 
             resetButton.addEventListener("click", function () {
@@ -71,6 +76,9 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(function () {
             button.textContent = "Push!";
         }, 10000); // 10000 millisecondes équivalent à 10 secondes
+
+        // Défloute l'image sélectionnée
+        randomImage.parentElement.classList.remove("flou");
     });
 
     fullscreenImage.addEventListener("click", function () {
@@ -85,9 +93,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // Au chargement de la page, attendez 3 secondes puis cachez le loader
-    setTimeout(function() {
-      document.querySelector('.loader').classList.remove('visible');
+    setTimeout(function () {
+        document.querySelector('.loader').classList.remove('visible');
     }, 3000);
-  });
+});
+
+

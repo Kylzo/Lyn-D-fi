@@ -82,6 +82,11 @@ header p {
     border: solid 1px #ffebff;
 }
 
+.image.flou {
+    filter: brightness(0.1)
+}
+
+
 /* Ajoutez un peu de style pour que l'image occupe tout l'écran */
 .fullscreen-image {
     position: fixed;
