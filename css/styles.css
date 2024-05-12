@@ -1,5 +1,6 @@
 /* Styles de base */
-body { 
+
+body {
     display: flex;
     flex-direction: column;
     font-family: "Lobster Two", sans-serif;
@@ -14,8 +15,7 @@ main {
     flex-grow: 1;
     text-align: -webkit-center;
     position: relative;
-    min-height: calc(100vh - (headerHeight + footerHeight)); 
-    /* Assurez-vous que le positionnement est relatif pour que les éléments enfants positionnés absoluement soient placés correctement */
+    min-height: calc(100vh - (headerHeight + footerHeight));
 }
 
 .background-image {
@@ -24,45 +24,105 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('images/main.jpg');
+    background-image: url('../images/main.jpg');
     background-size: cover;
-    /* Pour s'assurer que l'image de fond couvre tout le conteneur */
     background-position: center;
     opacity: 0.5;
     z-index: -1;
-    /* Assurez-vous que l'image de fond est positionnée en arrière-plan */
 }
 
 header {
+    display: flex;
     background-color: #ffffff;
     color: #000000;
     padding: 20px;
     text-align: center;
     box-shadow: 0px -8px 11px 0px;
-    /* Ajout d'une bordure en bas */
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-evenly;
 }
 
-/* Style du titre */
 header h1 {
     font-size: 36px;
     margin: 0;
 }
 
-/* Style du sous-titre */
 header p {
     font-size: 18px;
     margin: 5px 0 0 0;
 }
 
+.navbar {
+    align-content: center;
+}
 
+a {
+    padding-left: 15px;
+    text-decoration: none;
+    color: black;
+}
+
+footer {
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0px 8px 11px 0px;
+}
+
+
+/* ACCUEIL STYLE*/
+.accueil {
+    margin-block: 50px;
+    border-radius: 5px;
+    background-color: #e4a3ab38;
+    width: 30%;
+    height: 700px;
+}
+
+.texte-accueil {
+    padding: 20px;
+    color: #00000091;
+}
+
+.paragraphe {
+    padding-inline: 50px;
+    padding-top: 20px;
+}
+
+.gallery-deux {
+    height: 80vh;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Trois colonnes égales */
+    gap: 20px; /* Espacement entre les images */
+}
+
+.gallery-deux > div {
+    /* Optionnel: pour centrer verticalement et horizontalement le contenu */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery-deux img {
+    max-width: 80%; /* Pour empêcher les images de dépasser de leur conteneur */
+}
+
+.trois-en-un {
+    border: 1px solid #000000;
+}
+
+.trois-en-un:hover {
+    border: 1px solid #ffebff;
+}
+/* MICRO NOUVELLES STYLE */
 .gallery {
     padding: 20px;
     width: 60%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* Trois colonnes égales */
     grid-gap: 20px;
-    /* Espace entre les images */
 }
 
 .image {
@@ -87,7 +147,6 @@ header p {
 }
 
 
-/* Ajoutez un peu de style pour que l'image occupe tout l'écran */
 .fullscreen-image {
     position: fixed;
     top: 0;
@@ -95,9 +154,7 @@ header p {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
-    /* Ajoutez un fond semi-transparent */
     display: none;
-    /* Cachez initialement l'image */
 }
 
 .fullscreen-image img {
@@ -105,14 +162,6 @@ header p {
     margin: auto;
     max-width: 100%;
     max-height: 100%;
-}
-
-footer {
-    background-color: #ffffff;
-    color: #000000;
-    text-align: center;
-    padding: 10px;
-    box-shadow: 0px 8px 11px 0px;
 }
 
 .fullscreen-button {
@@ -127,9 +176,7 @@ footer {
     height: 80px;
     width: 80px;
     border-radius: 50%;
-    /* Pour rendre le bouton circulaire */
     background-image: linear-gradient(to bottom right, #fdfaef, #da9b96);
-    /* Utilisez la fonction linear-gradient pour le dégradé de couleur */
     border: solid white 0.5px;
     text-align: center;
     outline: none;
@@ -168,9 +215,7 @@ footer {
     height: 60px;
     width: 60px;
     border-radius: 50%;
-    /* Pour rendre le bouton circulaire */
     background-image: linear-gradient(to bottom right, #fdfaef, #da9b96);
-    /* Utilisez la fonction linear-gradient pour le dégradé de couleur */
     border: solid white 0.5px;
     text-align: center;
     outline: none;
@@ -189,7 +234,7 @@ footer {
         2px 2px 4px rgba(0, 0, 0, .1);
 }
 
-.reset-button:active{
+.reset-button:active {
     box-shadow: inset -2px -2px 6px rgba(255, 255, 255, .7),
         inset -2px -2px 4px rgba(255, 255, 255, .5),
         inset 2px 2px 2px rgba(255, 255, 255, .075),
@@ -197,7 +242,53 @@ footer {
 }
 
 
-/* Media queries pour les téléphones */
+/* ANIMATION */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.image img {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.animate {
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+}
+
+.animate:nth-child(1) {
+    animation-delay: 3.2s;
+}
+
+.animate:nth-child(2) {
+    animation-delay: 3.7s;
+}
+
+.animate:nth-child(3) {
+    animation-delay: 4.2s;
+
+}.animate:nth-child(4) {
+    animation-delay: 4.7s;
+}
+
+
+/* MEDIA */
+
 @media screen and (max-width: 980px) {
     header {
         font-size: 20px;
@@ -227,22 +318,6 @@ footer {
         height: 80px;
         width: 80px;
     }
-}
-
-/* Keyframes pour les animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-/* Appliquer l'animation aux images */
-.image img {
-    animation: fadeIn 0.5s ease-in-out;
 }
 
 @media screen and (max-width: 660px) {
